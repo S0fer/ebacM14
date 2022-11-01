@@ -145,9 +145,42 @@ function validaEmail(elemento){
 }
 
 
+
+
+// START Exercício Módulo 14 João Duarte
+function validaUF(elemento){
+
+    elemento.addEventListener('focusout', function(event) {
+
+        console.log('au')
+
+        event.preventDefault();
+
+        const ufValida = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?/i;
+        if(this.value.match(ufValida)) {
+            document.querySelector('.mensagem').innerHTML = "";
+            this.classList.remove('erro');
+            this.parentNode.classList.remove('erro');
+        } else {
+            document.querySelector('.mensagem').innerHTML = "O campo UF deve ser preenchido com apenas 2 caracteres maiúsculos Exemplo: RS";
+            this.classList.add('erro');
+            this.parentNode.classList.add('erro');
+            return false;
+        }
+
+    });
+
+}
+// END Exercício Módulo 14 João Duarte
+
+
+
+
+
 let camposObrigatorios = document.querySelectorAll('input.obrigatorio');
-let camposNumericos = document.querySelectorAll('input.numero');
+let camposNumericos = document.querySelectorAll('input.numerico');
 let camposEmail = document.querySelectorAll('input.email');
+let camposUF = document.querySelectorAll('input.uf');
 
 for( let emFoco of camposObrigatorios) {
     validaCampo(emFoco);
@@ -159,5 +192,9 @@ for( let emFoco of camposNumericos) {
 
 for( let emFoco of camposEmail) {
     validaEmail(emFoco);
+}
+
+for( let emFoco of camposUF) {
+    validaUF(emFoco);
 }
 
