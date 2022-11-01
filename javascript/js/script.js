@@ -152,11 +152,9 @@ function validaUF(elemento){
 
     elemento.addEventListener('focusout', function(event) {
 
-        console.log('au')
-
         event.preventDefault();
 
-        const ufValida = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?/i;
+        const ufValida = /[A-Z]{2}/;
         if(this.value.match(ufValida)) {
             document.querySelector('.mensagem').innerHTML = "";
             this.classList.remove('erro');
